@@ -61,7 +61,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
   }
 
   delete books[isbn].reviews[username];
-  return res.status(200).json({ message: "Review deleted successfully", reviews: books[isbn].reviews });
+  return res.status(200).json({ message: `Review for ISBN ${isbn} deleted` });
 });
 
 module.exports.authenticated = regd_users;
