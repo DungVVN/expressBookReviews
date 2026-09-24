@@ -59,22 +59,22 @@ public_users.get('/review/:isbn',function (req, res) {
 // Node client without duplicating request logic.
 const apiBaseUrl = process.env.BOOK_REVIEWS_API_URL || "http://localhost:5000";
 
-const getAllBooksWithPromise = () => axios.get(apiBaseUrl).then((response) => response.data);
-const getBookByISBNWithPromise = (isbn) =>
+const getAllBooks = () => axios.get(apiBaseUrl).then((response) => response.data);
+const getBookByISBN = (isbn) =>
   axios.get(`${apiBaseUrl}/isbn/${encodeURIComponent(isbn)}`).then((response) => response.data);
 
-const getBooksByAuthorWithAsyncAwait = async (author) => {
+const getBooksByAuthor = async (author) => {
   const response = await axios.get(`${apiBaseUrl}/author/${encodeURIComponent(author)}`);
   return response.data;
 };
 
-const getBooksByTitleWithAsyncAwait = async (title) => {
+const getBooksByTitle = async (title) => {
   const response = await axios.get(`${apiBaseUrl}/title/${encodeURIComponent(title)}`);
   return response.data;
 };
 
 module.exports.general = public_users;
-module.exports.getAllBooksWithPromise = getAllBooksWithPromise;
-module.exports.getBookByISBNWithPromise = getBookByISBNWithPromise;
-module.exports.getBooksByAuthorWithAsyncAwait = getBooksByAuthorWithAsyncAwait;
-module.exports.getBooksByTitleWithAsyncAwait = getBooksByTitleWithAsyncAwait;
+module.exports.getAllBooks = getAllBooks;
+module.exports.getBookByISBN = getBookByISBN;
+module.exports.getBooksByAuthor = getBooksByAuthor;
+module.exports.getBooksByTitle = getBooksByTitle;
